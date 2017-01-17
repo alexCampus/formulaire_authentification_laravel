@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\News;
 
 class UserController extends Controller
 {
+
+    
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $news = News::all();
+        return view('welcome', ['news' => $news]);
     }
 
     /**
@@ -34,9 +39,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [];
+        $data = User::
         $data['user'] = [
             'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'email' => $request->email,
+            'password' => $request->password,
             'gender' => $request->gender,
             'newsletter' => $request->newsletter,
             'mood' => $request->mood,

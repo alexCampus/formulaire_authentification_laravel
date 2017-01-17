@@ -1,11 +1,23 @@
 @extends('template')
 @section('content')
 
-    <form class="" action="/user" method="post">
+    <form class="" action="{{ url('/register') }}" method="post">
         {{ csrf_field() }}
         <div class="form-group">
             <label for="firstname">firstname</label>
             <input type="text" class="form-control" name="firstname" placeholder="firstname">
+        </div>
+        <div class="form-group">
+            <label for="lastname">lastname</label>
+            <input type="text" class="form-control" name="lastname" placeholder="lastname">
+        </div>
+        <div class="form-group">
+            <label for="email">email</label>
+            <input type="email" class="form-control" name="email" placeholder="email">
+        </div>
+        <div class="form-group">
+            <label for="password">password</label>
+            <input type="password" class="form-control" name="password" placeholder="password">
         </div>
         <div class="form-group">
             <label for="gender">Gender</label>

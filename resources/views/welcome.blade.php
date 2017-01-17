@@ -1,22 +1,17 @@
 @extends('template')
 @section('content')
 
-<div class="row">
-    <div class="col-md-6">
-        <div class="jumbotron">
-            <p class="text-center">
-                <h2>Formulaire #1: Utilisateur</h2>
-                <p><a class="btn btn-primary btn-lg" href="/user/create" role="button">Go !</a></p>
-            </p>
-        </div>
+@foreach ($news as $new) 
+
+    <div>
+    <h2>New N° {{ $new->id }} </h2>
+        <h3>title</h3>
+        <p>{{ $new->title }}</p>
+
+        <h3>content</h3>
+        <p>{{ $new->content }}</p>
     </div>
-    <div class="col-md-6">
-        <div class="jumbotron">
-            <p class="text-center">
-                <h2>Formulaire #2: News</h2>
-                <p><a class="btn btn-primary btn-lg" href="/news/create" role="button">Go !</a></p>
-            </p>
-        </div>
-    </div>
-</div>
+    <hr>
+
+@endforeach
 @endsection

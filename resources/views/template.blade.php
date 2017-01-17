@@ -22,10 +22,41 @@
                     <a class="navbar-brand" href="/">Formulaire</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
+            @if (Auth::check())
+                                    
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="/user/create">Utilisateur</a></li>
                         <li><a href="/news/create">News</a></li>
+                    </ul>
+            @endif
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- Authentication Links -->
+                        @if (Auth::guest())
+                            <li><a href="{{ url('/login') }}">Login</a></li>
+                            <li><a href="{{ url('/register') }}">Register</a></li>
+                        @else
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ Auth::user()->firstname }}  {{ Auth::user()->lastname }}<span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ url('/logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                    <li><a href="/mapage">Mon profil</a></li>
+                                    <li><a href="/mesNews">Mes News</a></li>
+                                </ul>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </nav>
@@ -35,4 +66,6 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <!-- Scripts -->
+    <script src="/js/app.js"></script>
 </html>
