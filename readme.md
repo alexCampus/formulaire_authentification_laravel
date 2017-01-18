@@ -62,6 +62,16 @@ composer install
 cp .env.example .env
 php artisan key:generate
 ```
+### Importation des tables 
+
+configurer le .env en fonction de votre Base de donnée
+ensuite
+
+```
+
+php artisan migrate
+
+```
 
 ## Lancer le projet  
 
