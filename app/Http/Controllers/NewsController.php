@@ -104,7 +104,9 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
+        
         $new = News::find($id);
+        $this->authorize('delete', $new);
         $new->delete();
         return redirect('/mesNews');
     }
